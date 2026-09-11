@@ -1,7 +1,7 @@
 # Sunehri — coded site (two directions)
 
 Real, production-ready implementations of the two directions from the Claude
-Design handoff (`organic-honey-whatsapp-store/`). Plain HTML/CSS, no build
+Design handoff (`organic-honey-whatsapp-store/`). Plain HTML/CSS/JS, no build
 step, no framework — open either `index.html` directly or serve the folder
 with any static host.
 
@@ -26,6 +26,26 @@ imagery of its source design.
   `hello@sunehri.in` — update every `wa.me/919815980350` link and the footer
   contact block if either changes.
 
+## Cart → one WhatsApp message
+
+The three jar sizes (250g / 500g / 1kg) each have a quantity stepper instead
+of a direct order link. Add a few, and a floating bar appears at the bottom
+of the page showing item count and total — tap it to review the order in a
+slide-up drawer (quantities still editable there), then **Order on
+WhatsApp** composes one message listing every line item, quantities, and
+the total, and opens it in WhatsApp. Every other "Order on WhatsApp" button
+on the page (hero, header pill, footer) automatically points at that same
+message once the cart has items, and falls back to the generic "I'd like to
+order honey" greeting when it's empty.
+
+There's no backend: the cart lives in the visitor's own browser
+(`localStorage`, key `sunehri:cart`) and nothing is sent anywhere until they
+tap the WhatsApp button themselves — still "no cart, no account" in the
+sense the copy promises, just with a quantity picker ahead of the one
+message. The gift duo / sampler trio bundles stay as their own direct
+"ask on WhatsApp" links since they're custom-priced, not catalog items with
+a fixed price.
+
 ## Structure
 
 ```
@@ -33,12 +53,17 @@ sunehri-website/
   light/
     index.html
     styles.css
+    cart.js
   dark/
     index.html
     styles.css
+    cart.js
 ```
 
 Both pages are mobile-first (the original design target) and scale up to a
 centered card on larger screens. The FAQ sections use native
-`<details>/<summary>` so they're real, accessible accordions — no JS
-required anywhere on either page.
+`<details>/<summary>` — real, accessible accordions with no JS. `cart.js` is
+the only script on either page and is identical in both folders (same three
+products, same WhatsApp number) — update prices/products by editing the
+`data-name`/`data-price` attributes on the `[data-product-id]` elements in
+each `index.html`; nothing in `cart.js` itself needs to change for that.
