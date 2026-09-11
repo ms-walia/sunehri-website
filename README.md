@@ -22,9 +22,9 @@ imagery of its source design.
   class="credit">` once the photo is yours.
 - **Instagram link is a placeholder (`href="#"`).** Fill in your real handle
   in the footer of both pages once you have one.
-- **WhatsApp number** is `+91 78142 14645` and the email is
-  `hello@sunehri.in`, taken from the design — update every `wa.me/917814214645`
-  link and the footer contact block if either changes.
+- **WhatsApp number** is `+91 98159 80350` and the email is
+  `hello@sunehri.in` — update every `wa.me/919815980350` link and the footer
+  contact block if either changes.
 
 ## Structure
 
